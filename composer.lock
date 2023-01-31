@@ -1,0 +1,63 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "3944aba4c9b2b80965b0adf90bb88144",
+    "packages": [
+        {
+            "name": "daiyong/php",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/daiyong77/php.git",
+                "reference": "76dd15f35510276d2cdba23d165fcf4cde86d86b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/daiyong77/php/zipball/76dd15f35510276d2cdba23d165fcf4cde86d86b",
+                "reference": "76dd15f35510276d2cdba23d165fcf4cde86d86b",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Daiyong\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "daiyong",
+                    "email": "1031850847@qq.com"
+                }
+            ],
+            "description": "php库,包含数据库操作、文件操作、远程抓取、一些常用的方法,建议php版本在7.4及以上",
+            "keywords": [
+                "curl",
+                "database",
+                "file",
+                "function",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/daiyong77/php/issues",
+                "source": "https://github.com/daiyong77/php/tree/v1.0.0"
+            },
+            "time": "2023-01-31T03:05:46+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
+}

@@ -1,0 +1,25 @@
+{
+    "name": "daiyong/php-frame",
+    "description": "小项目php框架",
+    "keywords": [
+        "php",
+        "frame"
+    ],
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "daiyong/php": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Controller\\": "code/controller",
+            "Model\\": "code/model"
+        }
+    },
+    "authors": [
+        {
+            "name": "daiyong",
+            "email": "1031850847@qq.com"
+        }
+    ]
+}
