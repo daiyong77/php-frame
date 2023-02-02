@@ -13,5 +13,9 @@ $CONFIG = array(
         'username' => 'root',
         'password' => 'root',
         'charset' => 'utf8'
+    ),
+    'page' => array(
+        'limitMax' => 100, //用于页面显示数据库查询最大条数
+        'limitDefault' => 30 //如传入错误则默认显示的条数
     )
 );

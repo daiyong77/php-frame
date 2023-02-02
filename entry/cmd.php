@@ -5,18 +5,18 @@ require_once __DIR__ . '/../config.php';
 if (!isset($argv)) exit('');
 
 //默认参数
-$defaultNamespace = 'Cmd\\'; //可为空
+$defaultNamespace = 'cmd\\'; //可为空
 $defaultController = 'index';
 $defaultAction = 'index';
 
 //解析命令行的controller与action
 $controller = ucwords($defaultController);
-$action = ucwords($defaultAction);
+$action = $defaultAction;
 if (isset($argv[1])) {
     $ca = explode('/', $argv[1]);
     if (count($ca) == 2) {
         $controller = ucwords($ca[0]);
-        $action = ucwords($ca[1]);
+        $action = $ca[1];
     }
 }
 //获取命令行的参数将命令行的信息传递给$_GET
@@ -29,6 +29,6 @@ foreach ($argv as $k => $v) {
     }
 }
 
-$className = '\\Controller\\' . $defaultNamespace . $controller;
+$className = '\\Controller\\' . ucwords($defaultNamespace) . $controller;
 $newController = new $className();
 $newController->$action();

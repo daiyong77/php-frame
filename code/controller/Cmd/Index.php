@@ -2,10 +2,10 @@
 
 namespace Controller\Cmd;
 
-class Index extends Common
+class Index extends \Controller\Common
 {
-    public function Index()
+    public function index()
     {
-        echo 'success';
+        $this->echo('测试输出成功');
     }
 }

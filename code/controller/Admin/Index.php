@@ -2,12 +2,10 @@
 
 namespace Controller\Admin;
 
-class Index extends Common
+class Index extends \Controller\Common
 {
-    public function Index()
+    public function index()
     {
-        $userModel = new \Model\User();
-        $id = $userModel->insert();
-        echo $id;
+        $this->success();
     }
 }
