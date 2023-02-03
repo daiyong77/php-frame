@@ -2,29 +2,29 @@
 安装方式 composer create-project daiyong/php-frame
 
 ## 目录结构介绍
-.
-├── code #代码文件夹
-│   ├── controller 
-│   │   ├── Admin #例:admin命名空间
-│   │   │   ├── Admin.php #例:控制器
-│   │   │   └── Index.php #例:控制器
-│   │   ├── Cmd #例:cmd命名空间
-│   │   │   └── Index.php #例:控制器
-│   │   └── Common.php #controller公用类
-│   └── model
-│       ├── Admin.php #例:admin模型
-│       └── Common.php #model公用类
-├── composer.json
-├── composer.lock
-├── config.php #配置文件
-├── data #一般用来存放文件
-├── entry #访问入口,外部一切访问从这个文件夹进入
-│   ├── cmd.php #文件内填写对应的命名空间
-│   └── index.php #文件内填写对应的命名空间
-└── README.md
+.  
+├── code #代码文件夹  
+│   ├── controller  
+│   │   ├── Admin #例:admin命名空间  
+│   │   │   ├── Admin.php #例:控制器  
+│   │   │   └── Index.php #例:控制器  
+│   │   ├── Cmd #例:cmd命名空间  
+│   │   │   └── Index.php #例:控制器  
+│   │   └── Common.php #controller公用类  
+│   └── model  
+│       ├── Admin.php #例:admin模型  
+│       └── Common.php #model公用类  
+├── composer.json  
+├── composer.lock  
+├── config.php #配置文件  
+├── data #一般用来存放文件  
+├── entry #访问入口,外部一切访问从这个文件夹进入  
+│   ├── cmd.php #文件内填写对应的命名空间  
+│   └── index.php #文件内填写对应的命名空间  
+└── README.md  
 
 ## 修改数据库数据时,model类rule写法笔记
-注:所有表主键必须为id
+注:所有表主键必须为id  
 ```
 public function rule()
 {
