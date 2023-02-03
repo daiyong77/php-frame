@@ -2,24 +2,20 @@
 
 namespace Controller\Admin;
 
-class Admin extends \Controller\Common
-{
+class Admin extends \Controller\Common {
     private $adminModel;
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
         $this->adminModel = new \Model\Admin();
     }
-    public function index()
-    {
+    public function index() {
         $get = @array(
             'id' => (int)$_GET['id']
         );
         $data = $this->adminModel->find(['id' => $get['id']]);
         $this->echo($data);
     }
-    public function list()
-    {
+    public function list() {
         $get = @array(
             'begin' => (int)$_GET['begin'],
             'size' => (int)$_GET['size']
@@ -36,8 +32,7 @@ class Admin extends \Controller\Common
         $list = $this->adminModel->findAll($getSql, [$get['begin'], $get['size']]);
         $this->echo($list);
     }
-    public function edit()
-    {
+    public function edit() {
         $post = @array(
             'id' => (int)$_POST['id'],
             'username' => trim($_POST['username']),
@@ -58,8 +53,7 @@ class Admin extends \Controller\Common
             $this->return($return, '新增成功', '新增失败');
         }
     }
-    public function delete()
-    {
+    public function delete() {
         $get = @array(
             'id' => (int)$_GET['id']
         );

@@ -5,10 +5,8 @@ namespace Model;
 use \Daiyong\Db as db;
 use \Daiyong\Func as func;
 
-class Admin extends Common
-{
-    public function rule()
-    {
+class Admin extends Common {
+    public function rule() {
         return array(
             'username|must' => array(
                 array('string', '用户名不能为空且必须在6~20个字符之间',  6, 20),
@@ -31,8 +29,7 @@ class Admin extends Common
             ),
         );
     }
-    public function find($param)
-    {
+    public function find($param) {
         $data = db::find('admin', $param);
         //加入权限组信息
         if (isset($data['group'])) {
@@ -40,8 +37,7 @@ class Admin extends Common
         }
         return $data;
     }
-    public function findAll($param, $limit)
-    {
+    public function findAll($param, $limit) {
         $param = $this->clear($param);
         $limit = $this->limit($limit);
         $list = db::findAll('admin', $param, $limit);
@@ -52,8 +48,7 @@ class Admin extends Common
         }
         return $list;
     }
-    public function edit($data)
-    {
+    public function edit($data) {
         $data = $this->clear($data);
         $verify = $this->verify($data, $this->rule());
         if ($verify !== true) {
@@ -66,13 +61,11 @@ class Admin extends Common
             return db::insert('admin', $data);
         }
     }
-    public function delete($param)
-    {
+    public function delete($param) {
         return db::delete('admin', $param);
     }
 
-    private function auto($data)
-    {
+    private function auto($data) {
         if (isset($data['password'])) {
             $data['salt'] = func::random(5);
             $data['password'] = md5($data['salt'] . $data['password'] . $data['salt']);

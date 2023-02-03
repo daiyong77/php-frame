@@ -4,11 +4,9 @@ namespace Controller;
 
 use \Daiyong\Db as db;
 
-class Common
-{
+class Common {
     public $config = array();
-    public function __construct()
-    {
+    public function __construct() {
         global $CONFIG;
         //全局配置赋值
         $this->config = $CONFIG;
@@ -27,16 +25,14 @@ class Common
      * @param {如果失败则输出该提示} $message2
      * @return {结束后退出}
      */
-    public function return($status, $message1 = '成功', $message2 = '失败')
-    {
+    public function return($status, $message1 = '成功', $message2 = '失败') {
         if ($status) {
             $this->success($message1);
         } else {
             $this->error($message2);
         }
     }
-    public function success($data = array(), $message = '成功')
-    {
+    public function success($data = array(), $message = '成功') {
         if (!is_array($data)) {
             $message = $data;
             $data = array();
@@ -47,8 +43,7 @@ class Common
             'data' => $data
         ));
     }
-    public function error($data = array(), $message = '失败')
-    {
+    public function error($data = array(), $message = '失败') {
         if (!is_array($data)) {
             $message = $data;
             $data = array();
@@ -66,8 +61,7 @@ class Common
      * @param {输出的json中是否带有中文} $iszw
      * @return {结束后退出}
      */
-    public function echo($data, $iszw = true)
-    {
+    public function echo($data, $iszw = true) {
         if (is_array($data)) {
             if ($iszw) {
                 echo json_encode($data, JSON_UNESCAPED_UNICODE);

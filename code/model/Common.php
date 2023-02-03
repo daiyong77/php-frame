@@ -4,17 +4,14 @@ namespace Model;
 
 use Daiyong\Db as db;
 
-class Common
-{
+class Common {
     public $config = array();
-    public function __construct()
-    {
+    public function __construct() {
         global $CONFIG;
         $this->config = $CONFIG;
     }
 
-    public function error($message = '失败')
-    {
+    public function error($message = '失败') {
         return array(
             'status' => 0,
             'message' => $message
@@ -26,8 +23,7 @@ class Common
      * @param {例:limit([0,10])} $data
      * @return {例:limit 0,10}
      */
-    public function limit($data)
-    {
+    public function limit($data) {
         $data[0] = (int)$data[0];
         $data[1] = (int)$data[1];
         if ($data[0] < 0) $data[0] = 0;
@@ -42,8 +38,7 @@ class Common
      * @param {array} $data
      * @return {array}
      */
-    public function clear($data)
-    {
+    public function clear($data) {
         $newData = array();
         foreach ($data as $k => $v) {
             if (!$v || $v == '%' || $v == '%%') continue;
@@ -58,8 +53,7 @@ class Common
      * @param {规则} $rule
      * @return {不通过返回string,通过返回true}
      */
-    public function verify($data, $rule)
-    {
+    public function verify($data, $rule) {
         foreach ($rule as $k => $v) {
             if (is_string($v[0])) { //一维数组则转换成二维数组
                 $v = array($v);
