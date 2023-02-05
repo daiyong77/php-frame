@@ -35,13 +35,13 @@ class Admin extends \Controller\Common {
     public function edit() {
         $post = @array(
             'id' => (int)$_POST['id'],
-            'username' => trim($_POST['username']),
-            'password' => trim($_POST['password']),
-            'nickname' => trim($_POST['nickname']),
-            'phone' => trim($_POST['phone']),
-            'mail' => trim($_POST['mail']),
+            'username' => $_POST['username'],
+            'password' => $_POST['password'],
+            'nickname' => $_POST['nickname'],
+            'phone' => $_POST['phone'],
+            'mail' => $_POST['mail'],
             'gid' => (int)($_POST['gid']),
-            'head' => trim($_POST['head'])
+            'head' => $_POST['head']
         );
         $return = $this->adminModel->edit($post);
         if (is_array($return)) {

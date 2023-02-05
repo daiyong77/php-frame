@@ -14,7 +14,10 @@ class Admin extends Common {
                 array('reg', '用户名只能为英文或数字组合', '/^[\w]+$/')
             ),
             'password|must' => array('string', '密码不能为空且必须在6~20个字符之间', 6, 20),
-            'gid|must' => array('idInTable', '未选择管理组或管理组不存在', 'admin_group'),
+            'gid|must' => array(
+                array('int', '请选择管理组'),
+                array('idInTable', '管理组不存在', 'admin_group')
+            ),
             'nickname' => array(
                 array('stringName', '昵称必须在2~8(英文2~24)个字符之间', 2, 8),
                 array('only', '已存在相同的昵称', 'admin')

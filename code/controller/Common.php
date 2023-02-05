@@ -10,9 +10,16 @@ class Common {
         global $CONFIG;
         //全局配置赋值
         $this->config = $CONFIG;
-        //将get参数全部trim
-        foreach ($_GET as $k => $v) {
-            $_GET[$k] = trim($v);
+        //将get与POST参数全部trim
+        if (isset($_GET)) {
+            foreach ($_GET as $k => $v) {
+                if (is_string($v)) $_GET[$k] = trim($v);
+            }
+        }
+        if (isset($_POST)) {
+            foreach ($_POST as $k => $v) {
+                if (is_string($v)) $_POST[$k] = trim($v);
+            }
         }
         //连接数据库
         db::connect($this->config['db']);
@@ -54,14 +61,22 @@ class Common {
             'data' => $data
         ));
     }
-
+    /**
+     * @description: 输出一行且换行,一般用于命令行
+     * @param {输出类容} $data
+     * @param {是否带有中文} $iszw
+     * @return {输出结果不退出}
+     */
+    public function tip($data, $iszw = true) {
+        $this->echo($data, $iszw, false);
+    }
     /**
      * @description: 输出
      * @param {输出类容} $data
      * @param {输出的json中是否带有中文} $iszw
      * @return {结束后退出}
      */
-    public function echo($data, $iszw = true) {
+    public function echo($data, $iszw = true, $exit = true) {
         if (is_array($data)) {
             if ($iszw) {
                 echo json_encode($data, JSON_UNESCAPED_UNICODE);
@@ -71,6 +86,10 @@ class Common {
         } else {
             echo $data;
         }
-        exit;
+        if ($exit) {
+            exit;
+        } else {
+            echo PHP_EOL;
+        }
     }
 }

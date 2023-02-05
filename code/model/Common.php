@@ -60,14 +60,12 @@ class Common {
             }
             $k = explode('|', $k);
             $field = $k[0];
-
             foreach ($v as $v2) {
-
                 if (
                     !isset($data['id']) &&
                     isset($k[1]) && $k[1] == 'must' &&
                     !isset($data[$field])
-                ) { //如果不存在则直接返回错误
+                ) { //必须字段新增时如果没有已填写则直接返回提示信息
                     return $v2[1];
                 }
                 if (isset($data[$field])) {
@@ -111,6 +109,16 @@ class Common {
                                 return $v2[1];
                             }
                             break;
+                        case 'date':
+                            if (!preg_match('/^[\d]{4}(\-|\/)([0-1]|)[\d](\-|\/)([0-3]|)[\d]$/', $data[$field])) {
+                                return $v2[1];
+                            }
+                            break;
+                        case 'time':
+                            if (!preg_match('/^[\d]{4}(\-|\/)([0-1]|)[\d](\-|\/)([0-3]|)[\d] ([0-2]|)[\d]:([0-5]|)[\d]:([0-5]|)[\d]$/', $data[$field])) {
+                                return $v2[1];
+                            }
+                            break;
                         case 'phone':
                             if (!preg_match('/^1[\d]{10}$/', $data[$field])) {
                                 return $v2[1];
@@ -121,11 +129,25 @@ class Common {
                                 return $v2[1];
                             }
                             break;
-                        case 'string':
-                            $len = mb_strlen($data[$field]);
-                            if ($len < $v2[2] || $len > $v2[3]) {
+                        case 'int':
+                            if (!is_numeric($data[$field])) {
                                 return $v2[1];
                             }
+                            if (isset($v2[2]) && $data[$field] < $v2[2]) {
+                                return $v2[1];
+                            };
+                            if (isset($v2[3]) &&  $data[$field] > $v2[3]) {
+                                return $v2[1];
+                            };
+                            break;
+                        case 'string':
+                            $len = mb_strlen($data[$field]);
+                            if (isset($v2[2]) && $len < $v2[2]) {
+                                return $v2[1];
+                            };
+                            if (isset($v2[3]) && $len > $v2[3]) {
+                                return $v2[1];
+                            };
                             break;
                     }
                 }
